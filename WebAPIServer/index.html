@@ -10,7 +10,8 @@
     <div>
         ID: <input type="number" value="0" id="txtId" style="width:5em">
         <input type="button" value="Read" onclick="findById();" />
-        <input type="button" value="Delete" onclick="deleteId();" /><br />
+        <input type="button" value="Delete" onclick="deleteId();" />
+        <input type="button" value="Get GAP Instance" onclick="getInstance();" /><br />
         ID: <input type="number" value="0" id="txtIdIns" style="width:5em">
         Quantità: <input type="number" value="0" id="txtNewQuant" style="width:10em">
         <input type="button" value="Insert" onclick="insertId();" />
@@ -101,6 +102,46 @@
             };
             options.error = function (err) { alert(err.statusText); };
             $.ajax(options);
+        }
+
+        function AjaxHelper(baseUrl) {
+            this._baseUrl = baseUrl;
+            var callWebAPI = function (url, verb, data, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function (evt) {
+                    var data = JSON.parse(evt.target.responseText);
+                    callback(data);
+                }
+                xhr.onerror = function () {
+                    alert("Error while calling Web API");
+                }
+                xhr.open(verb, url);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                if (data == null) xhr.send();
+                else xhr.send(JSON.stringify(data));
+            }
+            this.getGAPInstance = function (id, callback) {
+                callWebAPI(this._baseUrl + "/" + id, "GET", null, callback);
+            }
+        }
+
+        //chiamata xmlhttprequest
+        function getInstance() {
+            var ajaxHelper = new AjaxHelper("/api/Clienti");
+
+            var getGAPCallback = function (res) {
+                alert(res);
+                console.log(res);
+            }
+
+            var actionCallback = function (msg) {
+                alert(msg);
+            }
+
+            //GET
+            let id = $("#txtId").val();
+            console.log(id);
+            ajaxHelper.getGAPInstance("getGAPInstance?id=" + id, getGAPCallback);
         }
     </script>
 </body>

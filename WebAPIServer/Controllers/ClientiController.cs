@@ -84,5 +84,12 @@ namespace WebAPIServer.Controllers
             int nr = P.execNonQueryViaF(connString, queryString, factory);
             return "Customer deleted in " + nr + " rows";
         }
+
+        public string getGAPInstance(int id)
+        {
+            string res = "non trovato";
+
+            return res;
+        }
     }
 }
