@@ -9,8 +9,13 @@
 <body onload="init()">
     <div>
         ID: <input type="number" value="0" id="txtId" style="width:5em">
-        <input type="button" value="Read" onclick="findById();" /><br />
-        <input type="button" value="Read all" onclick="findAll();" />
+        <input type="button" value="Read" onclick="findById();" />
+        <input type="button" value="Delete" onclick="deleteId();" /><br />
+        ID: <input type="number" value="0" id="txtIdIns" style="width:5em">
+        Quantità: <input type="number" value="0" id="txtNewQuant" style="width:10em">
+        <input type="button" value="Insert" onclick="insertId();" />
+        <input type="button" value="Update" onclick="updateId();" /><br />
+        <input type="button" value="Read all" onclick="findAll();" /><br />
     </div>
     <script>
         function init() { }
@@ -50,6 +55,52 @@
                     alert(err);
                 }
             });
+        }
+        function insertId() {
+            var id = $('#txtIdIns').val();
+            var quant = $('#txtNewQuant').val();
+            var options = {};
+            options.url = "/api/Clienti/insertCustomer";
+            options.type = "POST";
+            options.data = JSON.stringify({
+                "id": id,
+                "req": quant,
+                "mag": -1
+            });
+            options.dataType = "json";
+            options.contentType = "application/json";
+            options.success = function (msg) {
+                alert(msg);
+            };
+            options.error = function (err) { alert(err.statusText); };
+            $.ajax(options);
+        }
+
+        function updateId() {
+            var options = {};
+            options.url = "/api/Clienti/updateCustomer";
+            options.type = "PUT";
+            options.data = JSON.stringify({
+                "id": $("#txtIdIns").val(),
+                "req": $('#txtNewQuant').val()
+            });
+            options.dataType = "json";
+            options.contentType = "application/json";
+            options.success = function (msg) { alert(msg); };
+            options.error = function (err) { alert(err.statusText); };
+            $.ajax(options);
+        };
+
+        function deleteId() {
+            var options = {};
+            options.url = "/api/Clienti/deleteCustomer/" + $("#txtId").val();
+            options.type = "DELETE";
+            options.contentType = "application/json";
+            options.success = function (msg) {
+                alert(msg);
+            };
+            options.error = function (err) { alert(err.statusText); };
+            $.ajax(options);
         }
     </script>
 </body>

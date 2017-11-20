@@ -199,5 +199,38 @@ namespace WebAPIServer.Models
             }
             return (res + "]").Replace(",]", "]");
         }
+
+        public int execNonQueryViaF(string connString, string queryText, string factory)
+        {
+            int numRows = 0;
+            DbProviderFactory dbFactory = null;
+
+            dbFactory = DbProviderFactories.GetFactory(factory);
+
+            using (DbConnection conn = dbFactory.CreateConnection())
+            {
+                try
+                {
+                    conn.ConnectionString = connString;
+                    conn.Open();
+                    IDbCommand com = conn.CreateCommand();
+                    com.CommandText = queryText;
+                    numRows = com.ExecuteNonQuery();
+
+                    
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    FlushText(this, ex.Message);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
+                }
+            }
+            return numRows;
+        }
     }
 }
