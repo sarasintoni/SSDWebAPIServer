@@ -11,6 +11,41 @@ namespace WebAPIServer.Controllers
 {
     public class ClientiController : ApiController
     {
+        public ClientiController()
+        {
+            connString = ConfigurationManager.ConnectionStrings["SQLiteConn"].ConnectionString;
+            factory = "System.Data.SQLite";
+        }
+
+        public class Client
+        {
+            public int id;
+            public int mag;
+            public int req;
+        }
+
+        public class Mag
+        {
+            public int id;
+            public int cap;
+        }
+
+        public class Cst
+        {
+            public int mag;
+            public int cli;
+            public int cost;
+        }
+
+        public class Instance
+        {
+            public string name;
+            public int numcustomers;
+            public int numfacilities;
+            public int[,] cost;
+            public int[,] req;
+            public int[] cap;
+        }
 
         private string connString, factory;
 
@@ -57,7 +92,7 @@ namespace WebAPIServer.Controllers
             string queryString = "insert into clienti (id, req, mag) values(";
             queryString += obj.id + "," + obj.req + ",'" + obj.mag + "')";
             int res = P.execNonQueryViaF(connString, queryString, factory);
-            return "Customer inserted with " + res + " rows"; // oppure dichiararla static
+            return "Customer inserted"; // oppure dichiararla static
         }
 
         [HttpPut]
@@ -87,8 +122,61 @@ namespace WebAPIServer.Controllers
 
         public string getGAPInstance(int id)
         {
-            string res = "non trovato";
+            init();
+            string res = "foo", s;
+            string queryText;
+            int i, j, numCostumers, numFacilities;
 
+            Persist P = new Persist();
+            //connString = ConfigurationManager.ConnectionStrings["SQLiteConn"].ConnectionString;
+            //factory = "System.Data.SQLite";
+            queryText = "SELECT id, mag, req FROM clienti";
+            s = P.readTableViaF(connString, queryText, factory);
+            Client[] client = JsonConvert.DeserializeObject<Client[]>(s);
+            Console.WriteLine("Numero clienti = " + client.Length);
+
+            queryText = "SELECT id, cap FROM magazzini";
+            s = P.readTableViaF(connString, queryText, factory);
+            Mag[] mag = JsonConvert.DeserializeObject<Mag[]>(s);
+            Console.WriteLine("Numero mag = " + mag.Length);
+            numFacilities = mag.Length;
+            numCostumers = client.Length / numFacilities;
+
+            queryText = "SELECT mag, cli, cost FROM costi";
+            s = P.readTableViaF(connString, queryText, factory);
+            Cst[] cst = JsonConvert.DeserializeObject<Cst[]>(s);
+            Console.WriteLine("Numero costi = " + cst.Length);
+
+            int[,] cost = new int[numFacilities, numCostumers];
+            for (j = 0; j < cst.Length; j++)
+            {
+                cost[cst[j].mag - 1, cst[j].cli - 1] = cst[j].cost;
+            }
+
+            int[,] req = new int[numFacilities, numCostumers];
+            for (j = 0; j < client.Length; j++)
+            {
+                req[client[j].mag - 1, client[j].id - 1] = client[j].req;
+            }
+
+            int[] cap = new int[numFacilities];
+            for (j = 0; j < mag.Length; j++)
+            {
+                cap[mag[j].id - 1] = mag[j].cap;
+            }
+
+            Instance I = new Instance();
+            I.name = "fromDB";
+            I.numcustomers = numCostumers;
+            I.numfacilities = numFacilities;
+            I.cost = cost;
+            I.req = req;
+            I.cap = cap;
+
+            res = JsonConvert.SerializeObject(I);
+
+
+            //P = null;
             return res;
         }
     }
