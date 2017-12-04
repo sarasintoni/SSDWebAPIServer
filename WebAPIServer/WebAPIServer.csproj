@@ -134,6 +134,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="js\costruttiva.js" />
     <Content Include="js\globalVar.js" />
     <Content Include="js\loadGap.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />

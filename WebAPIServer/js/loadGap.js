@@ -28,7 +28,9 @@ function receivedText(e) {
 //copia i campi del json => poi ho tutte le variabili che mi servono
 function setInstance(jInstance) {
     n = jInstance.numcustomers;   // num clienti
+    console.log("Numero clienti = " + n);
     m = jInstance.numfacilities;  // num server
+    console.log("Numero server = " + m);
     c = jInstance.cost;   // matrice dei costi
     req = jInstance.req;  // matrice delle richieste
     cap = jInstance.cap;  // vattore delle capacità

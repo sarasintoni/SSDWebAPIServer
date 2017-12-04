@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title> Client</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <!--<link rel="stylesheet" type="text/css" href="mystyle.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/globalVar.js"></script> <!-- ESEGUITI => se lavorano su elementi del DOM vanno caricati dopo -->
     <script src="js/loadGap.js"></script>
     <script src="js/costruttiva.js"></script>
-    <script src="js/localSearch.js"></script>
+    <!--<script src="js/localSearch.js"></script>-->
+    <script src="js/costruttiva.js"></script>
 </head>
 <body onload="init()">
     <div>
@@ -21,8 +22,10 @@
         <input type="button" value="Insert" onclick="insertId();" />
         <input type="button" value="Update" onclick="updateId();" /><br />
         <input type="button" value="Read all" onclick="findAll();" /><br />
+        <br />
         <input type="text" id="inputRemote" value="homemade/toy.json" style="width:10em" />
         <input type="button" value="Get remote instance" onclick="readWithCORS();"/><br />
+        <!--<input type="button" value="Euristica costruttiva" onclick="costruttiva();" />-->
         <input type="button" value="Costruttiva" onclick="solveConstruct();" /><br />
         <input type="button" value="Local search" onclick="run_opt10();" /><br />
     </div>
