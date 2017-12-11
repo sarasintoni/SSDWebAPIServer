@@ -45,6 +45,7 @@ function checkSol(sol) {
     for (j = 0; j < n; j++)
         if (sol[j] < 0 || sol[j] >= m || sol[j] === undefined) {
             z = Number.MAX_VALUE;
+            console.log("Errore di assegnamento nella soluzione di " + j);
             return z;
         }
         else
@@ -54,6 +55,7 @@ function checkSol(sol) {
         capused[sol[j]] += req[sol[j]][j];
         if (capused[sol[j]] > cap[sol[j]]) {
             z = Number.MAX_VALUE;
+            console.log("Errore di capacità nella soluzione di " + j);
             return z;
         }
     }

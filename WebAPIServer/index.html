@@ -8,7 +8,7 @@
     <script src="js/globalVar.js"></script> <!-- ESEGUITI => se lavorano su elementi del DOM vanno caricati dopo -->
     <script src="js/loadGap.js"></script>
     <script src="js/costruttiva.js"></script>
-    <!--<script src="js/localSearch.js"></script>-->
+    <script src="js/localSearch.js"></script>
     <script src="js/costruttiva.js"></script>
 </head>
 <body onload="init()">
@@ -25,9 +25,8 @@
         <br />
         <input type="text" id="inputRemote" value="homemade/toy.json" style="width:10em" />
         <input type="button" value="Get remote instance" onclick="readWithCORS();"/><br />
-        <!--<input type="button" value="Euristica costruttiva" onclick="costruttiva();" />-->
         <input type="button" value="Costruttiva" onclick="solveConstruct();" /><br />
-        <input type="button" value="Local search" onclick="run_opt10();" /><br />
+        <input type="button" value="Local search" onclick="run_opt10(c);" /><br />
     </div>
     <script>
         function init() { }

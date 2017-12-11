@@ -12,14 +12,15 @@ function solveConstruct() {
 
     //m = numero magazzini
     var dist = new Array(m);
-    var capLeft = cap;
+
+    var capLeft = cap.slice();
     sol = new Array(n);
     var cost = 0;
 
     for(i=0;i<m;i++) dist[i] = new Array(2);
     for(j=0;j<n;j++) { 
         for(i=0;i<m;i++) { 
-            dist[i][0] = req[i][j];
+            dist[i][0] = c[i][j];
             dist[i][1] = i;
         }
         dist.sort(compareKey);
@@ -30,6 +31,7 @@ function solveConstruct() {
                 sol[j] = i;
                 console.log("Al cliente " + j + " assegno il server " + i + " con una richiesta di " + req[i][j]);
                 capLeft[i] -= req[i][j];
+                console.log("quindi gli rimane una capacità di " + capLeft[i]);
                 cost += c[i][j];
                 break;
             }
