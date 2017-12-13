@@ -20,7 +20,7 @@ function solveConstruct() {
     for(i=0;i<m;i++) dist[i] = new Array(2);
     for(j=0;j<n;j++) { 
         for(i=0;i<m;i++) { 
-            dist[i][0] = c[i][j];
+            dist[i][0] = req[i][j];
             dist[i][1] = i;
         }
         dist.sort(compareKey);
