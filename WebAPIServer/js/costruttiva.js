@@ -45,7 +45,7 @@ function solveConstruct() {
     var zcheck = checkSol(sol);
     console.log("Cost " + cost + " zcheck " + zcheck + " sol " + sol);
     zub = cost;
-    solbest = sol;
+    solbest = sol.slice();
     console.log("Constructive, zub = " + zub);
     alert("Constructive, zub = " + zub);
     console.log(sol);

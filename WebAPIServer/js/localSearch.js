@@ -5,6 +5,10 @@ function run_opt10(cost) {
     else {
         let z = opt10(cost);
         var zcheck = checkSol(sol);
+        if (z < zub) {
+            zub = z
+            solbest = sol;
+        }
         console.log("[opt10] Costo " + z + " zcheck " + zcheck + " sol " + sol);
         alert("[opt10] Costo " + z + " zcheck " + zcheck);
     }

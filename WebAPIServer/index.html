@@ -11,6 +11,7 @@
     <script src="js/localSearch.js"></script>
     <script src="js/costruttiva.js"></script>
     <script src="js/ILS.js"></script>
+    <script src="js/GRASP.js"></script>
 </head>
 <body onload="init()">
     <div>
@@ -28,7 +29,9 @@
         <input type="button" value="Get remote instance" onclick="readWithCORS();"/><br />
         <input type="button" value="Costruttiva" onclick="solveConstruct();" /><br />
         <input type="button" value="Local search" onclick="run_opt10(c);" /><br />
+        <input type="text" id="time" value="2000" /><br />
         <input type="button" value="Integrated Local Search" onclick="ILS(c);" /><br />
+        <input type="button" value="GRASP" onclick="grasp();" /><br />
     </div>
     <script>
         function init() { }
