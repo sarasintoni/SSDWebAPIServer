@@ -29,9 +29,9 @@ function solveConstruct() {
             if(capLeft[i] >= req[i][j]) {
                 //quando trovo un cliente che ci sta nel magazzino glielo assegno
                 sol[j] = i;
-                console.log("Al cliente " + j + " assegno il server " + i + " con una richiesta di " + req[i][j]);
+                //console.log("Al cliente " + j + " assegno il server " + i + " con una richiesta di " + req[i][j]);
                 capLeft[i] -= req[i][j];
-                console.log("quindi gli rimane una capacità di " + capLeft[i]);
+                //console.log("quindi gli rimane una capacità di " + capLeft[i]);
                 cost += c[i][j];
                 break;
             }

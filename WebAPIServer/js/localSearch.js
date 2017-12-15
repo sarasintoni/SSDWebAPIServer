@@ -1,9 +1,13 @@
 ﻿//passiamo la matrice dei costi anche se ora non serve
 function run_opt10(cost) {
-    let z = opt10(cost);
-    var zcheck = checkSol(sol);
-    console.log("[opt10] Costo " + z + " zcheck " + zcheck + " sol " + sol);
-    alert("[opt10] Costo " + z + " zcheck " + zcheck + " sol " + sol);
+    if (sol == null)
+        alert("Prima devi fare la costruttiva!");
+    else {
+        let z = opt10(cost);
+        var zcheck = checkSol(sol);
+        console.log("[opt10] Costo " + z + " zcheck " + zcheck + " sol " + sol);
+        alert("[opt10] Costo " + z + " zcheck " + zcheck);
+    }
 }
 
 function opt10(cost) {

@@ -138,6 +138,7 @@
     <Content Include="js\costruttivaProf.js" />
     <Content Include="js\globalVar.js" />
     <Content Include="js\loadGap.js" />
+    <Content Include="js\ILS.js" />
     <Content Include="js\localSearch.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
