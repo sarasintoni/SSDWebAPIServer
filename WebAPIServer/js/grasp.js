@@ -9,6 +9,9 @@
         sol = solbest;
         var zcheck = checkSol(sol);
         console.log("[GRASP] Costo " + z + " zcheck " + zcheck + " sol " + sol);
+        document.getElementById("z").value = z;
+        document.getElementById("zcheck").value = zcheck;
+        document.getElementById("zub").value = zub;
         alert("[GRASP] Costo " + z + " zcheck " + zcheck);
     }
 }

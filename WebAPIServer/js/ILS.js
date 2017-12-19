@@ -33,6 +33,10 @@ function ILS() {
         sol = solbest;
         var zcheck = checkSol(sol);
         console.log("[ILS] Costo " + z + " zcheck " + zcheck + " sol " + sol);
+        document.getElementById("z").value = z;
+        document.getElementById("zub").value = zub;
+        document.getElementById("zcheck").value = zcheck;
+
         alert("[ISL] Costo " + z + " zcheck " + zcheck);
     }
 }

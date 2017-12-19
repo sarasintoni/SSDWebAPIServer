@@ -1,4 +1,8 @@
 ﻿function readWithCORS() {
+    document.getElementById("z").value = "";
+    document.getElementById("zub").value = "";
+    document.getElementById("zcheck").value = "";
+
     var resp;
     var req = new XMLHttpRequest();
     inText = document.getElementById("inputRemote").value;

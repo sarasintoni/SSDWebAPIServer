@@ -8,8 +8,11 @@ function run_opt10(cost) {
         if (z < zub) {
             zub = z
             solbest = sol;
+            document.getElementById("zub").value = zub;
         }
         console.log("[opt10] Costo " + z + " zcheck " + zcheck + " sol " + sol);
+        document.getElementById("z").value = z;
+        document.getElementById("zcheck").value = zcheck;
         alert("[opt10] Costo " + z + " zcheck " + zcheck);
     }
 }

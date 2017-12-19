@@ -44,9 +44,16 @@ function solveConstruct() {
     
     var zcheck = checkSol(sol);
     console.log("Cost " + cost + " zcheck " + zcheck + " sol " + sol);
-    zub = cost;
+    if (zub > cost) {
+        zub = cost;
+        document.getElementById("zub").value = zub;
+    }
     solbest = sol.slice();
     console.log("Constructive, zub = " + zub);
+
+    document.getElementById("z").value = cost;
+    document.getElementById("zcheck").value = zcheck;
+
     alert("Constructive, zub = " + zub);
     console.log(sol);
 }
