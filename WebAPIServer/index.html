@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,10 +26,10 @@
         <input type="button" value="Read all" onclick="findAll();" /><br />
         <br />
         <input type="text" id="inputRemote" value="homemade/toy.json" style="width:10em" />
-        <input type="button" value="Get remote instance" onclick="readWithCORS();"/><br />
+        <input type="button" value="Get remote instance" onclick="readWithCORS();" /><br />
         <input type="button" value="Costruttiva" onclick="solveConstruct();" /><br />
         <input type="button" value="Local search" onclick="run_opt10(c);" /><br />
-        <input type="text" id="time" value="2000" /><br />
+        Tempo massimo (in millis): <input type="number" id="time" value="2000" style="width:10em" /><br />
         <input type="button" value="Integrated Local Search" onclick="ILS(c);" /><br />
         <input type="button" value="GRASP" onclick="grasp();" /><br />
     </div>
@@ -53,7 +53,7 @@
                 }
             });
         }
-        function findAll() { 
+        function findAll() {
             $.ajax(
             {
                 url: "api/Clienti/GetAllClients",

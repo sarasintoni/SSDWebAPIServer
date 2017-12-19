@@ -8,7 +8,8 @@ function ILS() {
         var t0 = new Date();
         var iter = 0;
         var maxIter = 20000;
-        var maxt = 2000;
+        var maxt = document.getElementById("time").value;
+        console.log("Tempo = " + maxt);
         var tCurr = new Date();
         var tspan = tCurr - t0;
         var z;
@@ -53,48 +54,48 @@ function dataPerturbation(alpha) {
 
 function opt10(cost) {
 
-        var i, isol, j, z=0;
-        var isImproved;
-        var int = false;
+    var i, isol, j, z = 0;
+    var isImproved;
+    var int = false;
 
-        var capLeft = cap.slice();
-        for (j = 0; j < n; j++) {
-            if (sol[j] == undefined) {
-                int = true;
-                break;
-            }
-            capLeft[sol[j]] -= req[sol[j]][j];
-            z += cost[sol[j]][j];
+    var capLeft = cap.slice();
+    for (j = 0; j < n; j++) {
+        if (sol[j] == undefined) {
+            int = true;
+            break;
         }
+        capLeft[sol[j]] -= req[sol[j]][j];
+        z += cost[sol[j]][j];
+    }
 
-        if(!int) {
-            do {
-                isImproved = false;
-                for (j = 0; j < n; j++) {
+    if (!int) {
+        do {
+            isImproved = false;
+            for (j = 0; j < n; j++) {
 
-                    for (i = 0; i < m; i++) {
-                        if (cost[i][j] < cost[sol[j]][j]) {
-                            //console.log(cost[i][j] + " è minore di " + cost[sol[i]][j]);
-                            if (capLeft[i] >= req[i][j]) {
-                                //console.log("la quantità rimasta è ok");
-                                //tolgo i valori vecchi
-                                z -= cost[sol[j]][j];
-                                capLeft[sol[j]] += req[sol[j]][j];
-                                //aggiorno la soluzione
-                                sol[j] = i;
-                                //aggiorno i valori
-                                z += cost[sol[j]][j];
-                                capLeft[i] -= req[sol[j]][j];
+                for (i = 0; i < m; i++) {
+                    if (cost[i][j] < cost[sol[j]][j]) {
+                        //console.log(cost[i][j] + " è minore di " + cost[sol[i]][j]);
+                        if (capLeft[i] >= req[i][j]) {
+                            //console.log("la quantità rimasta è ok");
+                            //tolgo i valori vecchi
+                            z -= cost[sol[j]][j];
+                            capLeft[sol[j]] += req[sol[j]][j];
+                            //aggiorno la soluzione
+                            sol[j] = i;
+                            //aggiorno i valori
+                            z += cost[sol[j]][j];
+                            capLeft[i] -= req[sol[j]][j];
 
 
-                                //console.log("op10, improvement nel cliente " + j + ". z=" + z);
-                                isImproved = true;
-                                break;
-                            }
+                            //console.log("op10, improvement nel cliente " + j + ". z=" + z);
+                            isImproved = true;
+                            break;
                         }
                     }
-                    if (isImproved) break;
                 }
+                if (isImproved) break;
+            }
         } while (isImproved)
     }
 

@@ -16,7 +16,9 @@
 function GRASP(maxIter, candListSize) {
     var iter = 0;
     var t0 = new Date();
-    var maxt = 10000;
+    //var maxt = 20000000;
+    var maxt = document.getElementById("time").value;
+    console.log("Tempo = " + maxt);
     var tCurr = new Date();
     var tspan = tCurr - t0;
 
@@ -62,8 +64,8 @@ function GRASP_constructive(candListSize) {
 
         ii = 0;
 
-        while(ii<m) {
-            i = dist[(ii+icand)%m][1];
+        while (ii < m) {
+            i = dist[(ii + icand) % m][1];
             if (capLeft[i] >= req[i][j]) {
                 //quando trovo un cliente che ci sta nel magazzino glielo assegno
                 sol[j] = i;
