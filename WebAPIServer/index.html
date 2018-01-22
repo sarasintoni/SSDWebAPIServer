@@ -1,9 +1,9 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title> Client</title>
-    <!--<link rel="stylesheet" type="text/css" href="mystyle.css">-->
+    <title>GAP</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/globalVar.js"></script> <!-- ESEGUITI => se lavorano su elementi del DOM vanno caricati dopo -->
     <script src="js/loadGap.js"></script>
@@ -15,18 +15,26 @@
 </head>
 <body onload="init()">
     <div>
-        Instance name: <input type="text" id="inputRemote" value="homemade/toy.json" style="width:10em" />
-        <input type="button" value="Get remote instance" onclick="readWithCORS();" /><br />
-        <input type="button" value="Costruttiva" onclick="solveConstruct();" /><br />
-        <input type="button" value="Local search" onclick="run_opt10(c);" /><br />
-        Tempo massimo (in millis): <input type="number" id="time" value="2000" style="width:10em" /><br />
-        <input type="button" value="Integrated Local Search" onclick="ILS(c);" /><br />
-        <input type="button" value="GRASP" onclick="grasp();" /><br />
+            Instance name: <input type="text" id="inputRemote" value="homemade/toy.json" style="width:15em" />
+            <input type="button" class="button" value="Get remote instance" onclick="readWithCORS();" /><br />
+        <div class="line">
+            <input type="button" class="button" value="Costruttiva" onclick="solveConstruct();" />
+            <input type="button" class="button" value="Local search" onclick="run_opt10(c);" /><br />
+        </div>
+        <div class="line">
+            Max time (in millis): <input type="number" id="time" value="2000" style="width:10em" /><br />
+        </div>
+        <div class="line">    
+            <input type="button" class="button" value="Integrated Local Search" onclick="ILS(c);" />
+            <input type="button" class="button" value="GRASP" onclick="grasp();" /><br />
+        </div>
         <br />
-        Z: <input type="text" id="z" readonly /><br />
-        z-check: <input type="text" id="zcheck" readonly /><br />
-        zub: <input type="text" id="zub" readonly /><br />
-
+        <div class="line" id="output">
+            <p id="first">Z: <input type="text" id="z" readonly /></p>
+            <p> z-check: <input type="text" id="zcheck" class="print" readonly /></p>
+            <p> zub: <input type="text" id="zub" class="print" readonly /> <br />
+            con <input type="text" id="bestAl" class="print" readonly /> </p>
+        </div>
 
     </div>
     <script>

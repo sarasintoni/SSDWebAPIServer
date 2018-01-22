@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿﻿"use strict";
 var DEBUG = true; //enable/disable console log
 if(!DEBUG) { console.log = function() {}}
 

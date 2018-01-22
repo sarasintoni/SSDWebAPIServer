@@ -1,4 +1,4 @@
-﻿//passiamo la matrice dei costi anche se ora non serve
+﻿﻿//passiamo la matrice dei costi anche se ora non serve
 function run_opt10(cost) {
     if (sol == null)
         alert("Prima devi fare la costruttiva!");
@@ -9,6 +9,7 @@ function run_opt10(cost) {
             zub = z
             solbest = sol;
             document.getElementById("zub").value = zub;
+            document.getElementById("bestAl").value = "Local Search";
         }
         console.log("[opt10] Costo " + z + " zcheck " + zcheck + " sol " + sol);
         document.getElementById("z").value = z;

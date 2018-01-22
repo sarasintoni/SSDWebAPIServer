@@ -1,4 +1,4 @@
-﻿//passiamo la matrice dei costi anche se ora non serve
+﻿﻿//passiamo la matrice dei costi anche se ora non serve
 function ILS() {
     var alpha = 0.5;
 
@@ -7,7 +7,7 @@ function ILS() {
     else {
         var t0 = new Date();
         var iter = 0;
-        var maxIter = 20000;
+        var maxIter = 200000;
         var maxt = document.getElementById("time").value;
         console.log("Tempo = " + maxt);
         var tCurr = new Date();
@@ -36,8 +36,9 @@ function ILS() {
         document.getElementById("z").value = z;
         document.getElementById("zub").value = zub;
         document.getElementById("zcheck").value = zcheck;
+        document.getElementById("bestAl").value = "ILS";
 
-        alert("[ISL] Costo " + z + " zcheck " + zcheck);
+        alert("[ILS] Costo " + z + " zcheck " + zcheck);
     }
 }
 

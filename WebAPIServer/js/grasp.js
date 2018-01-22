@@ -1,10 +1,10 @@
-﻿function grasp() {
+﻿﻿function grasp() {
     var z;
 
     if (sol == null)
         alert("Prima devi fare la costruttiva!");
     else {
-        GRASP(20000, 3);
+        GRASP(200000, 3);
         z = zub;
         sol = solbest;
         var zcheck = checkSol(sol);
@@ -12,6 +12,7 @@
         document.getElementById("z").value = z;
         document.getElementById("zcheck").value = zcheck;
         document.getElementById("zub").value = zub;
+        document.getElementById("bestAl").value = "GRASP";
         alert("[GRASP] Costo " + z + " zcheck " + zcheck);
     }
 }

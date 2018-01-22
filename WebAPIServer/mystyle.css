@@ -1,0 +1,26 @@
+﻿.button {
+    margin-right: 15px;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.line {
+    margin-top: 15px;
+}
+
+#output {
+    flex: 1;
+    background-color: #b2f89e;
+    width: 300px;
+    padding-left: 10px;
+}
+
+.print {
+    margin-bottom: 5px;
+}
+
+#first {
+    margin-top: 5px;
+    padding-top: 5px;
+}

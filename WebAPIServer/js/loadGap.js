@@ -1,7 +1,5 @@
-﻿function readWithCORS() {
-    document.getElementById("z").value = "";
-    document.getElementById("zub").value = "";
-    document.getElementById("zcheck").value = "";
+﻿﻿function readWithCORS() {
+    start();
 
     var resp;
     var req = new XMLHttpRequest();
@@ -21,6 +19,20 @@
     }
 }
 
+function start() {
+    document.getElementById("z").value = "";
+    document.getElementById("zub").value = "";
+    document.getElementById("zcheck").value = "";
+    document.getElementById("bestAl").value = "";
+
+    c = null;
+    req = null;
+    cap = null;
+    sol = null;
+    solbest = null;
+    zub = Number.MAX_VALUE;
+    zlbBest = Number.MAX_VALUE;
+}
 
 // elaborazione dei dati letti in locale
 function receivedText(e) {
