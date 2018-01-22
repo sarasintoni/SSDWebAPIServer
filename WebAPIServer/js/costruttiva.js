@@ -1,4 +1,4 @@
-﻿function printMags(dist) {
+﻿﻿function printMags(dist) {
     var st = "";
     for(i = 0; i < dist.length; i++) {
         st += dist[i][1] + ": " + dist[i][0] + "\n";
@@ -44,9 +44,17 @@ function solveConstruct() {
     
     var zcheck = checkSol(sol);
     console.log("Cost " + cost + " zcheck " + zcheck + " sol " + sol);
-    zub = cost;
+    if (zub > cost) {
+        zub = cost;
+        document.getElementById("zub").value = zub;
+        document.getElementById("bestAl").value = "Costruttiva";
+    }
     solbest = sol.slice();
     console.log("Constructive, zub = " + zub);
+
+    document.getElementById("z").value = cost;
+    document.getElementById("zcheck").value = zcheck;
+
     alert("Constructive, zub = " + zub);
     console.log(sol);
 }
